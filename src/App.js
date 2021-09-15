@@ -5,7 +5,15 @@ import Modal from './components/Modal/Modal'
 import './App.css';
 
 function App() {
-  const [posts, setPosts] = useState([{ name: 'Elon Mask', profile: 'elonmusk', description: 'Perfect forms with elegance, power and cutting edge technology.', time: '30m ago', id: Date.now() }])
+  const [posts, setPosts] = useState([
+    { name: 'Elon Mask', profile: 'elonmusk', description: 'Perfect forms with elegance, power and cutting edge technology.', time: '30m ago', id: Date.now(), locked: false },
+    { name: 'Elon Mask', profile: 'elonmusk', description: 'Perfect forms with elegance, power and cutting edge technology.', time: '30m ago', id: Date.now(), locked: true }  
+  ])
+
+  const profiles = [
+    {name: 'Alex Lundqvist', profile: 'alexlundqvist', default: true},
+    {name: 'Alex Lundqvist', profile: 'alexlundqvist', default: false}
+  ]
   const [post, setPost] = useState({ description: '' })
   const [visible, setVisible] = useState(false)
 
@@ -19,7 +27,7 @@ function App() {
   }
 
   const createNewPost = () => {
-    setPosts([...posts, { ...post, name: 'Elon Mask', profile: 'elonmusk', time: '30m ago', id: Date.now() }])
+    setPosts([...posts, { ...post, name: 'Elon Mask', profile: 'elonmusk', time: '30m ago', id: Date.now(), locked: false }])
     setPost({ ...post, description: '' })
     setVisible(false)
   }
@@ -28,7 +36,7 @@ function App() {
     <div className="App">
       <Header />
       <div className="bg-gray-50">
-        <Content setVisible={makeModalVisible} posts={posts} />
+        <Content profiles={profiles} setVisible={makeModalVisible} posts={posts} />
         <Modal description={post.description} setVisible={makeModalVisible} createNewPost={createNewPost} getDataForPost={getDataForPost} visible={visible} />
       </div>
     </div>

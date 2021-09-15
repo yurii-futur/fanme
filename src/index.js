@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './assets/fonts/CircularStd-Bold.woff2'
+import './assets/fonts/CircularStd-Book.woff2'
 
 ReactDOM.render(
   <React.StrictMode>
